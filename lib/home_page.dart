@@ -6,116 +6,125 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black87,
+        centerTitle: true,
         title: const Text(
-          'Second Screen',
+          "Second Screen",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
-        centerTitle: true,
-        elevation: 2,
-        // Tombol back otomatis dari Scaffold
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.deepPurple,
-              Colors.purpleAccent,
-            ],
-          ),
-        ),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Container(
+            padding: const EdgeInsets.all(30),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.08),
+                  blurRadius: 20,
+                  offset: const Offset(0, 10),
+                ),
+              ],
+            ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                // Icon dengan animasi
-                const Icon(
-                  Icons.check_circle,
-                  size: 80,
-                  color: Colors.white,
-                ),
-                const SizedBox(height: 20),
-                // Teks selamat datang di halaman kedua
-                const Text(
-                  'You are on Second Screen!',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'This is the destination page',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white70,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 40),
-                // Tombol kembali dengan icon
-                ElevatedButton.icon(
-                  onPressed: () {
-                    // Kembali ke Halaman Pertama dengan animasi
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text(
-                    'Go back to First Screen',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.deepPurple,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 15,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
-                    shadowColor: Colors.black26,
-                  ),
-                ),
-                const SizedBox(height: 30),
-                // Card informasi tambahan
-                Card(
-                  color: Colors.white.withOpacity(0.2),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: const [
-                        Text(
-                          '💡 Tip:',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          'You can go back using the back button\nor the button below',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white70,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+                // Icon sukses
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color(0xFF4CAF50),
+                        Color(0xFF81C784),
                       ],
                     ),
+                  ),
+                  child: const Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: 60,
+                  ),
+                ),
+
+                const SizedBox(height: 25),
+
+                const Text(
+                  "Navigation Successful!",
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+                const SizedBox(height: 12),
+
+                const Text(
+                  "You have successfully navigated to the second screen.\nPress the button below to return.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black54,
+                    height: 1.5,
+                  ),
+                ),
+
+                const SizedBox(height: 30),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+                  child: ElevatedButton.icon(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.arrow_back),
+                    label: const Text(
+                      "Back to First Screen",
+                      style: TextStyle(fontSize: 17),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.indigo,
+                      foregroundColor: Colors.white,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Colors.indigo.withOpacity(0.08),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Row(
+                    children: [
+                      Icon(
+                        Icons.info_outline,
+                        color: Colors.indigo,
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          "You can also return using the back button in the AppBar.",
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
